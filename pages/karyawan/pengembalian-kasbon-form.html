@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pengembalian Kas Bon - MASERP Mockup</title>
+<link rel="stylesheet" href="../../assets/css/main.css">
+</head>
+<body data-active-menu="pengembalian-kas-bon">
+
+<div id="app-header"></div>
+<div id="app-sidebar"></div>
+
+<main class="app-main">
+  <div class="page-card">
+    <div class="page-card__header">
+      <div class="page-card__title" id="pageTitle">+ Pengembalian Kas Bon</div>
+      <div class="page-card__actions">
+        <button class="btn btn-outline" id="btnActivityLog" type="button">&#128269; Activity Log</button>
+        <button class="btn btn-outline" id="btnHelp" type="button">? Help</button>
+      </div>
+    </div>
+
+    <div class="page-card__body">
+      <h2 style="font-size:19px;margin:0 0 18px;">+ Penerimaan Piutang</h2>
+
+      <!-- Baris 1: No Transaksi, Departemen, Proyek -->
+      <div class="field-row">
+        <div class="field-group">
+          <label>No. Transaksi</label>
+          <div class="with-btn">
+            <input type="text" id="fNoTransaksi" disabled>
+            <button class="btn-icon blue" id="btnRegenNo" type="button" title="Regenerasi nomor">&#8635;</button>
+          </div>
+        </div>
+        <div class="field-group">
+          <label>Departemen</label>
+          <select id="fDepartemen">
+            <option>GA-HR</option>
+            <option>PUSAT</option>
+            <option>SANGATTA</option>
+            <option>PROJECT</option>
+          </select>
+        </div>
+        <div class="field-group wide">
+          <label>Proyek</label>
+          <div class="with-btn">
+            <input type="text" id="fProyek" placeholder="Pilih project (opsional)">
+            <button class="btn-icon blue" id="btnPickProyek" type="button">&#128269;</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Baris 2: Karyawan | Tgl. Trn -->
+      <div class="field-row">
+        <div class="field-group wide">
+          <label>Karyawan <span style="color:var(--danger);">*</span></label>
+          <div class="with-btn">
+            <input type="text" id="fKaryawan" placeholder="Nama karyawan" list="karyawanList">
+            <button class="btn-icon blue" id="btnPickKaryawan" type="button">&#128269;</button>
+          </div>
+          <datalist id="karyawanList"></datalist>
+        </div>
+        <div class="field-group">
+          <label>Tgl. Trn.</label>
+          <input type="date" id="fTglTrn">
+        </div>
+      </div>
+
+      <datalist id="akunBankList">
+        <option value="Kas Kecil - HO">
+        <option value="Bank Mandiri - HO">
+        <option value="Bank BCA - HO">
+      </datalist>
+
+      <!-- Tabel Informasi Bank / Kurs -->
+      <div class="jurnal-subheader" style="margin-top:8px;">
+        <span>&#127974; Informasi Bank / Kurs</span>
+      </div>
+      <div class="bankkurs-table-wrap">
+        <table class="bankkurs-table">
+          <thead>
+            <tr>
+              <th>Akun Bank</th>
+              <th>Nama Bank</th>
+              <th>Kurs</th>
+              <th>Kurs (IDR)</th>
+              <th>Kurs Target (IDR)</th>
+              <th>Tipe Transaksi</th>
+              <th>Jurnal</th>
+              <th>Keterangan</th>
+              <th class="col-amount">Jumlah Yang Dibayar</th>
+              <th class="col-action">Hapus</th>
+            </tr>
+          </thead>
+          <tbody id="bankTableBody">
+            <!-- diisi oleh pengembalian-kasbon-form.js -->
+          </tbody>
+        </table>
+      </div>
+      <div class="table-actions-row">
+        <button class="btn btn-outline btn-sm" id="btnAddBankRow" type="button">+ Tambah Baris</button>
+        <span></span>
+      </div>
+
+      <div class="inline-summary-row">
+        <div class="inline-summary-box">
+          <label>Jumlah Bank</label>
+          <input type="text" id="sJumlahBank" disabled value="0,00">
+        </div>
+        <div class="inline-summary-box">
+          <label>Setelah Konversi Kurs</label>
+          <input type="text" id="sSetelahKonversi" disabled value="0,00">
+        </div>
+      </div>
+
+      <!-- ================= TABS ================= -->
+      <div class="tabs" style="margin-top:24px;">
+        <button class="tab-btn is-active" data-tab="piutang-karyawan" type="button">Piutang Karyawan</button>
+        <button class="tab-btn" data-tab="rincian-jurnal" type="button">Rincian Jurnal Akun</button>
+      </div>
+
+      <!-- ---------- TAB: Piutang Karyawan ---------- -->
+      <div class="tab-panel is-active" id="panel-piutang-karyawan">
+        <div class="piutang-table-wrap">
+          <table class="piutang-table">
+            <thead>
+              <tr>
+                <th class="col-check">Bayar</th>
+                <th>No. Transaksi</th>
+                <th>Tipe Transaksi</th>
+                <th>Tgl. Faktur</th>
+                <th>Tgl. Jth. Tempo</th>
+                <th>Crc.</th>
+                <th>Kurs</th>
+                <th class="col-amount">Sisa Total</th>
+                <th class="col-amount">Terima Pengembalian BS</th>
+              </tr>
+            </thead>
+            <tbody id="piutangTableBody">
+              <!-- diisi oleh pengembalian-kasbon-form.js -->
+            </tbody>
+          </table>
+        </div>
+        <div class="total-terima-row">
+          <div class="total-terima-box">
+            <label>Total Terima Pengembalian</label>
+            <input type="text" id="sTotalTerima" disabled value="0,00">
+          </div>
+        </div>
+      </div>
+
+      <!-- ---------- TAB: Rincian Jurnal Akun ---------- -->
+      <div class="tab-panel" id="panel-rincian-jurnal">
+        <div class="jurnal-toolbar">
+          <div class="jurnal-radio-group">
+            <label><input type="radio" name="fJurnalMode" value="otomatis" checked> Jurnal Otomatis</label>
+            <label><input type="radio" name="fJurnalMode" value="manual"> Jurnal Manual</label>
+          </div>
+          <button class="btn btn-outline btn-sm" id="btnBuatJurnal" type="button">&#8635; Buat Jurnal</button>
+        </div>
+
+        <div class="jurnal-subheader">
+          <span>&#9878; Rincian Jurnal Akun</span>
+          <button class="btn btn-teal btn-sm" id="btnAddJurnal" type="button">+ Tambah</button>
+        </div>
+        <div class="jurnal-table-wrap">
+          <table class="jurnal-table">
+            <thead>
+              <tr>
+                <th style="width:12%;">Kode Akun</th>
+                <th style="width:12%;">Cost Center</th>
+                <th style="width:16%;">Nama Akun</th>
+                <th style="width:20%;">Keterangan</th>
+                <th style="width:12%;">Komponen</th>
+                <th style="width:12%;">Jumlah Debit</th>
+                <th style="width:12%;">Jumlah Kredit</th>
+                <th class="col-action">Hapus</th>
+              </tr>
+            </thead>
+            <tbody id="jurnalTableBody">
+              <!-- diisi oleh pengembalian-kasbon-form.js -->
+            </tbody>
+          </table>
+        </div>
+        <div class="jurnal-balance-row">
+          <div class="jurnal-balance-box">
+            <label>Jumlah Debit - Kredit</label>
+            <input type="text" id="jurnalBalance" disabled value="0,00">
+          </div>
+        </div>
+      </div>
+
+      <!-- Keterangan -->
+      <div class="field-row" style="margin-top:20px;">
+        <div class="field-group wide" style="flex:1 1 100%;">
+          <label>Keterangan</label>
+          <textarea id="fKeterangan" placeholder="contoh: PENGEMBALIAN KAS BON ASMUNI TGL 31/08/2026" style="min-height:38px;"></textarea>
+        </div>
+      </div>
+
+      <div class="override-checkbox-row">
+        <input type="checkbox" id="fOverrideTidakSama">
+        <label for="fOverrideTidakSama">Jumlah penerimaan tidak sama dengan piutang dapat disimpan?</label>
+      </div>
+
+      <div class="form-footer">
+        <button class="btn btn-blue" id="btnSimpan" type="button">Simpan</button>
+        <a class="btn btn-outline" href="daftar-pengembalian-kasbon.html" id="btnBatal">Batalkan</a>
+      </div>
+
+    </div>
+  </div>
+</main>
+
+<script>window.APP_BASE = "../../";</script>
+<script src="../../assets/js/karyawan-store.js"></script>
+<script src="../../assets/js/kasbon-store.js"></script>
+<script src="../../assets/js/pengembalian-kasbon-store.js"></script>
+<script src="../../assets/js/shared.js"></script>
+<script src="pengembalian-kasbon-form.js"></script>
+</body>
+</html>

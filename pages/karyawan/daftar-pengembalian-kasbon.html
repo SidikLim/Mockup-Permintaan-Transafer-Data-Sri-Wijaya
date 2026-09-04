@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Daftar Pengembalian Kasbon Karyawan - MASERP Mockup</title>
+<link rel="stylesheet" href="../../assets/css/main.css">
+</head>
+<body data-active-menu="pengembalian-kas-bon">
+
+<div id="app-header"></div>
+<div id="app-sidebar"></div>
+
+<main class="app-main">
+  <div class="page-card">
+    <div class="page-card__header">
+      <div class="page-card__title">&#128274; Daftar Pengembalian Kasbon Karyawan</div>
+      <div class="page-card__actions">
+        <button class="btn btn-teal" id="btnFilterSemua" type="button">Semua &#9662;</button>
+        <button class="btn btn-teal" id="btnTambah" type="button">+ Tambah</button>
+        <button class="btn btn-teal" id="btnImport" type="button">&#8593; Import Transaksi</button>
+        <button class="btn btn-outline" id="btnHelp" type="button">? Help</button>
+      </div>
+    </div>
+
+    <div class="page-card__body">
+      <div class="toolbar">
+        <select class="select-pagesize" id="pageSize">
+          <option value="10">10</option>
+          <option value="20" selected>20</option>
+          <option value="50">50</option>
+        </select>
+        <input class="search-input" id="searchInput" type="text" placeholder="Pencarian Global (no. transaksi, karyawan, keterangan)">
+      </div>
+
+      <div class="table-scroll">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>No. Transaksi</th>
+              <th>Karyawan</th>
+              <th>Tgl. Trn.</th>
+              <th>Keterangan</th>
+              <th class="num">Nominal IDR</th>
+              <th>Ubah</th>
+              <th>Hapus</th>
+              <th>Lihat</th>
+              <th>Cetak</th>
+              <th>Cetak G.L.</th>
+            </tr>
+          </thead>
+          <tbody id="tableBody">
+            <!-- diisi oleh daftar-pengembalian-kasbon.js -->
+          </tbody>
+        </table>
+      </div>
+
+      <div class="pagination">
+        <div class="pagination__pages" id="paginationPages"></div>
+        <div class="total-record" id="totalRecord">Total Record: 0</div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<script>window.APP_BASE = "../../";</script>
+<script src="../../assets/js/karyawan-store.js"></script>
+<script src="../../assets/js/kasbon-store.js"></script>
+<script src="../../assets/js/pengembalian-kasbon-store.js"></script>
+<script src="../../assets/js/shared.js"></script>
+<script src="daftar-pengembalian-kasbon.js"></script>
+</body>
+</html>

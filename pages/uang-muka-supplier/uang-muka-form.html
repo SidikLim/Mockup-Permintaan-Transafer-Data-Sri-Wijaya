@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Uang Muka Supplier - MASERP Mockup</title>
+<link rel="stylesheet" href="../../assets/css/main.css">
+</head>
+<body data-active-menu="uang-muka-supplier-2">
+
+<div id="app-header"></div>
+<div id="app-sidebar"></div>
+
+<main class="app-main">
+  <div class="page-card">
+    <div class="page-card__header">
+      <div class="page-card__title" id="pageTitle">+ Uang Muka Supplier 2</div>
+      <div class="page-card__actions">
+        <button class="btn btn-outline" id="btnActivityLog" type="button">&#128269; Activity Log</button>
+        <button class="btn btn-outline" id="btnHelp" type="button">? Help</button>
+      </div>
+    </div>
+
+    <div class="page-card__body">
+
+      <div class="form-row" style="justify-content:space-between;align-items:center;">
+        <div style="flex:1;">
+          <h2 style="font-size:19px;margin:0;">Uang Muka Supplier</h2>
+        </div>
+        <div style="width:260px;">
+          <div class="form-row" style="margin-bottom:0;">
+            <label style="width:100px;">Departemen</label>
+            <div class="form-control-wrap">
+              <select id="fDepartemen">
+                <option>PUSAT</option>
+                <option>SANGATTA</option>
+                <option>BANDUNG</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-grid" style="margin-top:18px;">
+        <div>
+          <div class="form-row">
+            <label>Supplier <span style="color:var(--danger);">*</span></label>
+            <div class="form-control-wrap with-btn">
+              <input type="text" id="fSupplier" placeholder="Nama supplier" list="supplierList">
+              <button class="btn-icon blue" id="btnPickSupplier" type="button">&#128269;</button>
+            </div>
+            <datalist id="supplierList"></datalist>
+          </div>
+          <div class="form-row">
+            <label>No. Otomatis</label>
+            <div class="form-control-wrap">
+              <select id="fNoOtomatis">
+                <option>UMS01</option>
+                <option>UMS02</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-row">
+            <label>Tgl. Trn.</label>
+            <div class="form-control-wrap"><input type="date" id="fTglTrn"></div>
+          </div>
+        </div>
+        <div>
+          <div class="form-row">
+            <label>No. PO</label>
+            <div class="form-control-wrap with-btn">
+              <input type="text" id="fNoPO" placeholder="Nomor PO terkait (opsional)">
+              <button class="btn-icon blue" id="btnPickPO" type="button">&#128269;</button>
+            </div>
+          </div>
+          <div class="form-row">
+            <label>No. Transaksi</label>
+            <div class="form-control-wrap"><input type="text" id="fNoTransaksi" disabled></div>
+          </div>
+          <div class="form-row">
+            <label>Syarat Bayar</label>
+            <div class="form-control-wrap">
+              <select id="fSyaratBayar">
+                <option>CASH ON DELIVERY</option>
+                <option>Kredit 7 Hari</option>
+                <option>Kredit 14 Hari</option>
+                <option>Kredit 30 Hari</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-row">
+            <label>Tgl. Jth. Tempo</label>
+            <div class="form-control-wrap"><input type="date" id="fTglJatuhTempo"></div>
+          </div>
+          <div class="form-row">
+            <label>Jurnal</label>
+            <div class="form-control-wrap">
+              <select id="fJurnalAkun">
+                <option>01 Hutang usaha</option>
+                <option>02 Hutang lain-lain</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="form-row">
+        <label>Keterangan</label>
+        <div class="form-control-wrap"><textarea id="fKeterangan" placeholder="contoh: di transfer via bank BCA"></textarea></div>
+      </div>
+
+      <!-- ================= TABS ================= -->
+      <div class="tabs">
+        <button class="tab-btn is-active" data-tab="rincian-transaksi" type="button">Rincian Transaksi</button>
+        <button class="tab-btn" data-tab="rincian-jurnal" type="button">Rincian Jurnal Akun</button>
+      </div>
+
+      <!-- ---------- TAB: Rincian Transaksi (item lines) ---------- -->
+      <div class="tab-panel is-active" id="panel-rincian-transaksi">
+        <div class="item-table-wrap">
+          <table class="item-table">
+            <thead>
+              <tr>
+                <th class="col-check">PPh</th>
+                <th class="col-check">Ppn</th>
+                <th>Keterangan</th>
+                <th class="col-qty">Qty</th>
+                <th class="col-jumlah">Jumlah IDR</th>
+                <th class="col-action">Hapus</th>
+              </tr>
+            </thead>
+            <tbody id="itemTableBody">
+              <!-- diisi oleh uang-muka-form.js -->
+            </tbody>
+          </table>
+        </div>
+        <div class="table-actions-row">
+          <button class="btn btn-outline btn-sm" id="btnAddItem" type="button">+ Tambah Baris</button>
+          <span class="field-note">Centang <strong>Ppn</strong> untuk menyertakan baris pada perhitungan PPN 11%. Centang <strong>PPh</strong> untuk menyertakan baris pada perhitungan PPh (hanya aktif bila Ppn baris tersebut dicentang).</span>
+        </div>
+      </div>
+
+      <!-- ---------- TAB: Rincian Jurnal Akun ---------- -->
+      <div class="tab-panel" id="panel-rincian-jurnal">
+        <div class="jurnal-toolbar">
+          <div class="jurnal-radio-group">
+            <label><input type="radio" name="fJurnalMode" value="otomatis" checked> Jurnal Otomatis</label>
+            <label><input type="radio" name="fJurnalMode" value="manual"> Jurnal Manual</label>
+          </div>
+          <button class="btn btn-outline btn-sm" id="btnBuatJurnal" type="button">&#8635; Buat Jurnal</button>
+        </div>
+
+        <div class="jurnal-subheader">
+          <span>&#9878; Rincian Jurnal Akun</span>
+          <button class="btn btn-teal btn-sm" id="btnAddJurnal" type="button">+ Tambah</button>
+        </div>
+        <div class="jurnal-table-wrap">
+          <table class="jurnal-table">
+            <thead>
+              <tr>
+                <th style="width:14%;">Kode Akun</th>
+                <th style="width:14%;">Cost Center</th>
+                <th style="width:18%;">Nama Akun</th>
+                <th style="width:26%;">Keterangan</th>
+                <th style="width:14%;">Jumlah Debit</th>
+                <th style="width:14%;">Jumlah Kredit</th>
+                <th class="col-action">Hapus</th>
+              </tr>
+            </thead>
+            <tbody id="jurnalTableBody">
+              <!-- diisi oleh uang-muka-form.js -->
+            </tbody>
+          </table>
+        </div>
+        <div class="jurnal-balance-row">
+          <div class="jurnal-balance-box">
+            <label>Jumlah Debit - Kredit</label>
+            <input type="text" id="jurnalBalance" disabled value="0,00">
+          </div>
+        </div>
+      </div>
+
+      <!-- ================= Informasi PPN + Rincian Transaksi (ringkasan) ================= -->
+      <div class="summary-grid">
+        <div>
+          <h3 class="summary-panel-title">Informasi PPN</h3>
+          <div class="ppn-radio-list">
+            <label><input type="radio" name="fPpnType" value="tidak_ada"> Tidak ada PPN</label>
+            <label><input type="radio" name="fPpnType" value="tidak_dipungut"> PPN Tidak Dipungut Pajak</label>
+            <label><input type="radio" name="fPpnType" value="inklusif"> PPN Inklusif</label>
+            <label><input type="radio" name="fPpnType" value="eksklusif"> PPN Eksklusif (+11%)</label>
+          </div>
+          <div class="ppn-detail-box" id="ppnDetailBox">
+            <div class="form-row">
+              <label>Tgl. Faktur Pajak</label>
+              <div class="form-control-wrap"><input type="date" id="fTglFakturPajak"></div>
+            </div>
+            <div class="ppn-checkbox-line">
+              <input type="checkbox" id="fTidakIsiNoFakturPajak">
+              <label for="fTidakIsiNoFakturPajak" style="width:auto;">Tidak Isi No. Faktur Pajak</label>
+            </div>
+            <div class="form-row">
+              <label>No. Faktur Pajak</label>
+              <div class="form-control-wrap"><input type="text" id="fNoFakturPajak" placeholder="Nomor faktur pajak"></div>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <h3 class="summary-panel-title">Rincian Transaksi</h3>
+          <div class="summary-row">
+            <label>Supplier Mata Uang</label>
+            <div class="form-control-wrap"><input type="text" id="sMataUang" disabled></div>
+          </div>
+          <div class="summary-row">
+            <label>Dp Tertagih</label>
+            <div class="form-control-wrap" style="display:flex;align-items:center;gap:6px;">
+              <input type="number" id="fDpTertagih" min="0" max="100" style="text-align:right;">
+              <span>%</span>
+            </div>
+          </div>
+          <div class="summary-row">
+            <label>Subtotal</label>
+            <div class="form-control-wrap"><input type="text" id="sSubtotal" disabled></div>
+          </div>
+          <div class="summary-row">
+            <label>DPP</label>
+            <div class="form-control-wrap"><input type="text" id="sDpp" disabled></div>
+          </div>
+          <div class="summary-row">
+            <label id="lblPajak11">Pajak 11%</label>
+            <div class="tax-search">
+              <input type="text" value="PPN11" disabled style="max-width:80px;">
+              <div class="form-control-wrap"><input type="text" id="sPpnAmount" disabled></div>
+            </div>
+          </div>
+          <div class="summary-row">
+            <label>Pph Dipotong</label>
+            <div class="tax-search">
+              <select id="fPphType" class="tax-select"></select>
+              <button class="btn-icon blue" id="btnPilihPph" type="button" title="Pilih Pph">&#128269;</button>
+            </div>
+          </div>
+          <div class="summary-row">
+            <label id="lblPajakPph">PPh</label>
+            <div class="form-control-wrap"><input type="text" id="sPphAmount" disabled></div>
+          </div>
+          <div class="summary-row total-row">
+            <label>Jumlah</label>
+            <div class="form-control-wrap"><input type="text" id="sJumlah" disabled></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-footer">
+        <button class="btn btn-teal" id="btnCetakSimpan" type="button">Cetak dan Simpan</button>
+        <button class="btn btn-blue" id="btnSimpan" type="button">Simpan</button>
+        <a class="btn btn-outline" href="daftar-uang-muka.html" id="btnBatal">Batalkan</a>
+      </div>
+
+    </div>
+  </div>
+</main>
+
+<script>window.APP_BASE = "../../";</script>
+<script src="../../assets/js/data-store.js"></script>
+<script src="../../assets/js/uang-muka-store.js"></script>
+<script src="../../assets/js/shared.js"></script>
+<script src="uang-muka-form.js"></script>
+</body>
+</html>

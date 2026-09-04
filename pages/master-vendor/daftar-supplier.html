@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Daftar Supplier - MASERP Mockup</title>
+<link rel="stylesheet" href="../../assets/css/main.css">
+</head>
+<body data-active-menu="supplier">
+
+<div id="app-header"></div>
+<div id="app-sidebar"></div>
+
+<main class="app-main">
+  <div class="page-card">
+    <div class="page-card__header">
+      <div class="page-card__title">&#128100; Daftar Supplier</div>
+      <div class="page-card__actions">
+        <button class="btn btn-outline" id="btnGeneratePpn" type="button">&#8635; Generate Default Type PPN</button>
+        <button class="btn btn-teal" id="btnUangMuka2" type="button">+ Uang Muka 2</button>
+        <button class="btn btn-teal" id="btnTambah" type="button">+ Tambah</button>
+        <button class="btn btn-teal" id="btnImport" type="button">&#8593; Impor Supplier</button>
+        <button class="btn btn-outline" id="btnHelp" type="button">? Help</button>
+      </div>
+    </div>
+
+    <div class="page-card__body">
+      <div class="toolbar">
+        <select class="select-pagesize" id="pageSize">
+          <option value="10">10</option>
+          <option value="25">25</option>
+          <option value="50">50</option>
+        </select>
+        <input class="search-input" id="searchInput" type="text" placeholder="Pencarian Global (kode, nama, alamat)">
+      </div>
+
+      <div class="table-scroll">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Kode Supplier</th>
+              <th>Supplier</th>
+              <th>Crc</th>
+              <th>Alamat</th>
+              <th class="num">Uang Muka</th>
+              <th class="num">Saldo Utang</th>
+              <th>Rekening Bank</th>
+              <th>Attach File</th>
+              <th>Ubah</th>
+              <th>Hapus</th>
+            </tr>
+          </thead>
+          <tbody id="tableBody">
+            <!-- diisi oleh daftar-supplier.js -->
+          </tbody>
+        </table>
+      </div>
+
+      <div class="pagination">
+        <div class="pagination__pages" id="paginationPages"></div>
+        <div class="total-record" id="totalRecord">Total Record: 0</div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<script>window.APP_BASE = "../../";</script>
+<script src="../../assets/js/data-store.js"></script>
+<script src="../../assets/js/shared.js"></script>
+<script src="daftar-supplier.js"></script>
+</body>
+</html>

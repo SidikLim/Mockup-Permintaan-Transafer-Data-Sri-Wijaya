@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dashboard - MASERP Mockup</title>
+<link rel="stylesheet" href="assets/css/main.css">
+</head>
+<body data-active-menu="dashboard">
+
+<div id="app-header"></div>
+<div id="app-sidebar"></div>
+
+<main class="app-main">
+
+  <!-- ==================================================================
+       Dashboard - hanya visual/statis (alur sistem), tidak interaktif.
+       Ini adalah tampilan awal saat mockup dibuka.
+       ================================================================== -->
+  <section class="flow-section">
+    <h2 class="flow-title">Alur Sistem Pembelian</h2>
+    <div class="flow-row">
+      <div class="flow-card"><span class="flow-card__icon">&#128203;</span><span>Purchase Order</span></div>
+      <span class="flow-arrow">&#10132;</span>
+      <div class="flow-card"><span class="flow-card__icon">&#128666;</span><span>Terima Barang</span></div>
+      <span class="flow-arrow">&#10132;</span>
+      <div class="flow-card"><span class="flow-card__icon">&#128722;</span><span>Faktur Pembelian</span></div>
+      <span class="flow-arrow">&#10132;</span>
+      <div class="flow-card"><span class="flow-card__icon">&#128176;</span><span>Pelunasan Utang</span></div>
+    </div>
+  </section>
+
+  <section class="flow-section">
+    <h2 class="flow-title">Alur Sistem Penjualan</h2>
+    <div class="flow-row">
+      <div class="flow-card"><span class="flow-card__icon">&#128196;</span><span>Sales Order</span></div>
+      <span class="flow-arrow">&#10132;</span>
+      <div class="flow-card"><span class="flow-card__icon">&#128666;</span><span>Surat Jalan</span></div>
+      <span class="flow-arrow">&#10132;</span>
+      <div class="flow-card"><span class="flow-card__icon">&#128179;</span><span>Faktur Penjualan</span></div>
+      <span class="flow-arrow">&#10132;</span>
+      <div class="flow-card"><span class="flow-card__icon">&#128176;</span><span>Penerimaan Piutang</span></div>
+    </div>
+  </section>
+
+  <section class="flow-section">
+    <h2 class="flow-title">Alur Sistem Produksi</h2>
+    <div class="flow-row">
+      <div class="flow-card"><span class="flow-card__icon">&#128221;</span><span>Work Order</span></div>
+      <span class="flow-arrow">&#10132;</span>
+      <div class="flow-card"><span class="flow-card__icon">&#127981;</span><span>Produksi (Keluar Bahan)</span></div>
+      <span class="flow-arrow">&#10132;</span>
+      <div class="flow-card"><span class="flow-card__icon">&#9989;</span><span>Terima Barang Jadi</span></div>
+    </div>
+  </section>
+
+  <!-- Akses cepat ke modul yang sudah aktif pada mockup ini -->
+  <section class="flow-section" style="margin-top:34px;">
+    <h2 class="flow-title">Akses Cepat (Mockup Tahap Ini)</h2>
+    <div class="quick-links">
+      <a class="quick-link-card" href="pages/master-vendor/daftar-supplier.html">
+        <span class="flow-card__icon">&#128100;</span>
+        <div>
+          <div class="quick-link-card__title">Master Vendor / Supplier</div>
+          <div class="quick-link-card__desc">Data supplier &amp; informasi rekening bank</div>
+        </div>
+      </a>
+      <a class="quick-link-card" href="pages/uang-muka-supplier/daftar-uang-muka.html">
+        <span class="flow-card__icon">&#128179;</span>
+        <div>
+          <div class="quick-link-card__title">Uang Muka Supplier 2</div>
+          <div class="quick-link-card__desc">Transaksi permintaan/pembayaran uang muka supplier</div>
+        </div>
+      </a>
+    </div>
+  </section>
+
+</main>
+
+<script>window.APP_BASE = "./";</script>
+<script src="assets/js/data-store.js"></script>
+<script src="assets/js/uang-muka-store.js"></script>
+<script src="assets/js/shared.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    MockUI.mountShell('dashboard');
+  });
+</script>
+</body>
+</html>

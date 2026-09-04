@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Request Cash Transaction - MASERP Mockup</title>
+<link rel="stylesheet" href="../../assets/css/main.css">
+</head>
+<body data-active-menu="request-transaksi-kasbank">
+
+<div id="app-header"></div>
+<div id="app-sidebar"></div>
+
+<main class="app-main">
+  <div class="page-card">
+    <div class="page-card__header">
+      <div class="page-card__title" id="pageTitle">+ Request Cash Transaction</div>
+      <div class="page-card__actions">
+        <button class="btn btn-outline" id="btnHelp" type="button">? Help</button>
+      </div>
+    </div>
+
+    <div class="page-card__body">
+      <div id="stampBox"></div>
+
+      <div class="field-row" style="justify-content:space-between;align-items:flex-end;">
+        <div style="flex:1;">
+          <h2 style="font-size:19px;margin:0;">Request Cash Transaction</h2>
+        </div>
+        <div class="field-group">
+          <label>Departemen</label>
+          <select id="fDepartemen">
+            <option>PUSAT</option>
+            <option>TANGERANG</option>
+            <option>SANGATTA</option>
+            <option>GA-HR</option>
+            <option>PROJECT</option>
+          </select>
+        </div>
+        <div class="field-group wide">
+          <label>Proyek</label>
+          <div class="with-btn">
+            <input type="text" id="fProyek" placeholder="Pilih proyek (opsional)">
+            <button class="btn-icon blue" id="btnPickProyek" type="button">&#128269;</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="field-row" style="margin-top:18px;">
+        <div class="field-group">
+          <label>No. Transaksi</label>
+          <div class="with-btn">
+            <input type="text" id="fNoTransaksi" disabled>
+            <button class="btn-icon blue" id="btnRegenNo" type="button" title="Regenerasi nomor">&#8635;</button>
+          </div>
+        </div>
+        <div class="field-group">
+          <label>Tgl. Trn.</label>
+          <input type="date" id="fTglTrn">
+        </div>
+        <div class="field-group wide">
+          <label>Dibayar Kepada / Terima Dari</label>
+          <input type="text" id="fDibayarKepada" placeholder="Nama penerima/pengirim">
+        </div>
+      </div>
+
+      <div class="tabs" style="margin-top:20px;">
+        <button class="tab-btn is-active" type="button" disabled>Rincian Transaksi Kas / Bank</button>
+      </div>
+
+      <div class="bankkurs-table-wrap">
+        <table class="bankkurs-table">
+          <thead>
+            <tr>
+              <th>Kas/Bank</th>
+              <th>Dept.</th>
+              <th>Crc</th>
+              <th>Kurs</th>
+              <th>Tipe Transaksi</th>
+              <th>Cair?</th>
+              <th>No. Giro</th>
+              <th>Tgl. Jth. Tempo</th>
+              <th>Jurnal</th>
+              <th>Keterangan</th>
+              <th class="col-amount">Total</th>
+              <th class="col-action">Hapus</th>
+            </tr>
+          </thead>
+          <tbody id="rincianTableBody">
+            <!-- diisi oleh request-kasbank-form.js -->
+          </tbody>
+        </table>
+      </div>
+      <div class="table-actions-row">
+        <button class="btn-link" id="btnAddRincian" type="button">+ Tambah Bank Baru</button>
+        <span></span>
+      </div>
+
+      <datalist id="kasBankList"></datalist>
+
+      <div class="field-row" style="margin-top:20px;">
+        <div class="field-group wide" style="flex:2 1 60%;">
+          <label>Keterangan</label>
+          <textarea id="fKeterangan" placeholder="Keterangan transaksi" style="min-height:70px;"></textarea>
+        </div>
+        <div class="field-group">
+          <label>Jumlah Transaksi</label>
+          <input type="text" id="sJumlahTransaksi" disabled value="0,00">
+        </div>
+      </div>
+
+      <div id="activityLogBox"></div>
+
+      <div class="form-footer">
+        <button class="btn btn-teal" id="btnCetakSimpan" type="button">Cetak dan Simpan</button>
+        <button class="btn btn-blue" id="btnSimpan" type="button">Simpan</button>
+        <a class="btn btn-outline" href="daftar-request-kasbank.html" id="btnBatal">Batalkan</a>
+      </div>
+
+    </div>
+  </div>
+</main>
+
+<script>window.APP_BASE = "../../";</script>
+<script src="../../assets/js/kasbank-store.js"></script>
+<script src="../../assets/js/request-kasbank-store.js"></script>
+<script src="../../assets/js/shared.js"></script>
+<script src="request-kasbank-form.js"></script>
+</body>
+</html>

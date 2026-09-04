@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Daftar Bank - MASERP Mockup</title>
+<link rel="stylesheet" href="../../assets/css/main.css">
+</head>
+<body data-active-menu="master-kas-bank">
+
+<div id="app-header"></div>
+<div id="app-sidebar"></div>
+
+<main class="app-main">
+  <div class="page-card">
+    <div class="page-card__header">
+      <div class="page-card__title">&#127974; Daftar Bank</div>
+      <div class="page-card__actions">
+        <button class="btn btn-teal" id="btnTambah" type="button">+ Tambah</button>
+        <button class="btn btn-outline" id="btnHelp" type="button">? Help</button>
+      </div>
+    </div>
+
+    <div class="page-card__body">
+      <div class="toolbar">
+        <select class="select-pagesize" id="pageSize">
+          <option value="10" selected>10</option>
+          <option value="20">20</option>
+          <option value="50">50</option>
+        </select>
+        <input class="search-input" id="searchInput" type="text" placeholder="Pencarian Global">
+      </div>
+
+      <div class="table-scroll">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th data-sort="kode">Kode Bank <span class="sort-icon">&#8693;</span></th>
+              <th data-sort="nama">Nama Bank <span class="sort-icon">&#8693;</span></th>
+              <th class="num" data-sort="saldo">Saldo <span class="sort-icon">&#8693;</span></th>
+              <th>Jenis Mata Uang</th>
+              <th>Telepon</th>
+              <th>No Rek.</th>
+              <th data-sort="tipe">Tipe <span class="sort-icon">&#8693;</span></th>
+              <th>Ubah</th>
+              <th>Hapus</th>
+            </tr>
+          </thead>
+          <tbody id="tableBody">
+            <!-- diisi oleh daftar-bank.js -->
+          </tbody>
+        </table>
+      </div>
+
+      <div class="pagination">
+        <div class="pagination__pages" id="paginationPages"></div>
+        <div class="total-record" id="totalRecord">Total Record: 0</div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<script>window.APP_BASE = "../../";</script>
+<script src="../../assets/js/kasbank-store.js"></script>
+<script src="../../assets/js/shared.js"></script>
+<script src="daftar-bank.js"></script>
+</body>
+</html>

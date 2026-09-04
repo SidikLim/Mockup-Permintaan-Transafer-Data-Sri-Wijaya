@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pelunasan Hutang - MASERP Mockup</title>
+<link rel="stylesheet" href="../../assets/css/main.css">
+</head>
+<body data-active-menu="pelunasan-hutang">
+
+<div id="app-header"></div>
+<div id="app-sidebar"></div>
+
+<main class="app-main">
+  <div class="page-card">
+    <div class="page-card__header">
+      <div class="page-card__title" id="pageTitle">+ Pelunasan Hutang</div>
+      <div class="page-card__actions">
+        <button class="btn btn-outline" id="btnHelp" type="button">? Help</button>
+      </div>
+    </div>
+
+    <div class="page-card__body">
+      <h2 style="font-size:19px;margin:0 0 18px;">Pelunasan Hutang</h2>
+
+      <div class="field-row">
+        <div class="field-group">
+          <label>Departemen</label>
+          <select id="fDepartemen">
+            <option>PUSAT</option>
+            <option>TANGERANG</option>
+            <option>SANGATTA</option>
+            <option>GA-HR</option>
+            <option>PROJECT</option>
+          </select>
+        </div>
+        <div class="field-group">
+          <label>No. Transaksi</label>
+          <div class="with-btn">
+            <input type="text" id="fNoTransaksi" disabled>
+            <button class="btn-icon blue" id="btnRegenNo" type="button" title="Regenerasi nomor">&#8635;</button>
+          </div>
+        </div>
+        <div class="field-group">
+          <label>Tgl. Trn.</label>
+          <input type="date" id="fTglTrn">
+        </div>
+        <div class="field-group wide">
+          <label>Dari Supplier</label>
+          <div class="with-btn">
+            <input type="text" id="fSupplier" placeholder="Nama supplier" list="supplierList">
+            <button class="btn-icon blue" id="btnPickSupplier" type="button">&#128269;</button>
+          </div>
+          <datalist id="supplierList"></datalist>
+        </div>
+        <div class="field-group wide">
+          <label>Pengajuan Pembayaran</label>
+          <div id="pengajuanFieldWrap"></div>
+          <datalist id="pengajuanList"></datalist>
+        </div>
+      </div>
+
+      <div class="jurnal-subheader" style="margin-top:8px;">
+        <span>&#127974; Informasi Bank / Kurs</span>
+      </div>
+      <div class="bankkurs-table-wrap">
+        <table class="bankkurs-table">
+          <thead>
+            <tr>
+              <th>Akun Bank</th>
+              <th>Nama Kas/Bank</th>
+              <th>Mata Uang</th>
+              <th>Kurs (IDR)</th>
+              <th>Kurs Target (IDR)</th>
+              <th>Tipe Transaksi</th>
+              <th>Cair?</th>
+              <th>No. Giro</th>
+              <th>Tgl. Jth. Tempo</th>
+              <th>Jurnal</th>
+              <th>Keterangan</th>
+              <th class="col-amount">Pembayaran</th>
+              <th class="col-action">Hapus</th>
+            </tr>
+          </thead>
+          <tbody id="bankTableBody">
+            <!-- diisi oleh pelunasan-hutang-form.js -->
+          </tbody>
+        </table>
+      </div>
+      <div class="table-actions-row">
+        <button class="btn-link" id="btnAddBankRow" type="button">+ Tambah Bank Baru</button>
+        <span></span>
+      </div>
+      <datalist id="kasBankList"></datalist>
+
+      <div class="inline-summary-row">
+        <div class="inline-summary-box">
+          <label id="lblJumlahBank">Jumlah Keluar Kas</label>
+          <input type="text" id="sJumlahBank" disabled value="0,00">
+        </div>
+        <div class="inline-summary-box">
+          <label>Setelah Konversi Kurs</label>
+          <input type="text" id="sSetelahKonversi" disabled value="0,00">
+        </div>
+      </div>
+
+      <!-- ================= TABS ================= -->
+      <div class="tabs" style="margin-top:24px;">
+        <button class="tab-btn is-active" data-tab="lunasi-faktur" type="button">Lunasi Beberapa Faktur</button>
+        <button class="tab-btn" data-tab="rincian-jurnal" type="button">Rincian Jurnal Akun</button>
+      </div>
+
+      <!-- ---------- TAB: Lunasi Beberapa Faktur ---------- -->
+      <div class="tab-panel is-active" id="panel-lunasi-faktur">
+        <div class="toolbar">
+          <select class="select-pagesize" id="pageSize">
+            <option value="10" selected>10</option>
+            <option value="20">20</option>
+          </select>
+          <input class="search-input" id="searchFaktur" type="text" placeholder="Pencarian Global">
+        </div>
+        <div class="piutang-table-wrap">
+          <table class="piutang-table">
+            <thead>
+              <tr>
+                <th class="col-check">Bayar</th>
+                <th>No. Faktur</th>
+                <th>No. Invoice</th>
+                <th>Dept.</th>
+                <th>No. P.O.</th>
+                <th>Tipe Transaksi</th>
+                <th>Tgl. Trn. Faktur</th>
+                <th>Tgl. Jth. Tempo</th>
+                <th>Mata Uang</th>
+                <th>Kurs</th>
+                <th class="col-amount">Sisa</th>
+                <th class="col-amount">Pembayaran</th>
+              </tr>
+            </thead>
+            <tbody id="fakturTableBody">
+              <!-- diisi oleh pelunasan-hutang-form.js -->
+            </tbody>
+          </table>
+        </div>
+        <div class="total-terima-row">
+          <div class="total-terima-box">
+            <label>Total Hutang Dibayar</label>
+            <input type="text" id="sTotalHutang" disabled value="0,00">
+          </div>
+        </div>
+
+        <div class="field-row" style="margin-top:18px;">
+          <div class="field-group narrow">
+            <label>Kurs Pembayaran</label>
+            <input type="text" inputmode="decimal" id="fKursPembayaran" value="1">
+          </div>
+          <div class="field-group wide" style="flex:1 1 100%;">
+            <label>Keterangan</label>
+            <textarea id="fKeterangan" placeholder="Keterangan pelunasan hutang" style="min-height:60px;"></textarea>
+          </div>
+        </div>
+
+        <div class="override-checkbox-row">
+          <input type="checkbox" id="fOverrideTidakSama">
+          <label for="fOverrideTidakSama">Total keluar kas tidak sama dengan hutang?</label>
+        </div>
+      </div>
+
+      <!-- ---------- TAB: Rincian Jurnal Akun ---------- -->
+      <div class="tab-panel" id="panel-rincian-jurnal">
+        <div class="jurnal-toolbar">
+          <div class="jurnal-radio-group">
+            <label><input type="radio" name="fJurnalMode" value="otomatis" checked> Jurnal Otomatis</label>
+            <label><input type="radio" name="fJurnalMode" value="manual"> Jurnal Manual</label>
+          </div>
+          <button class="btn btn-outline btn-sm" id="btnBuatJurnal" type="button">&#8635; Buat Jurnal</button>
+        </div>
+
+        <div class="jurnal-subheader">
+          <span>&#9878; Rincian Jurnal Akun</span>
+          <button class="btn btn-teal btn-sm" id="btnAddJurnal" type="button">+ Tambah Akun Baru</button>
+        </div>
+        <div class="jurnal-table-wrap">
+          <table class="jurnal-table">
+            <thead>
+              <tr>
+                <th style="width:14%;">Kode Akun</th>
+                <th style="width:14%;">Cost Center</th>
+                <th style="width:18%;">Nama Akun</th>
+                <th style="width:22%;">Keterangan</th>
+                <th style="width:16%;">Jumlah Debit</th>
+                <th style="width:16%;">Jumlah Kredit</th>
+                <th class="col-action">Hapus</th>
+              </tr>
+            </thead>
+            <tbody id="jurnalTableBody">
+              <!-- diisi oleh pelunasan-hutang-form.js -->
+            </tbody>
+          </table>
+        </div>
+        <div class="jurnal-balance-row">
+          <div class="jurnal-balance-box">
+            <label>Jlh Debit - Kredit</label>
+            <input type="text" id="jurnalBalance" disabled value="0,00">
+          </div>
+        </div>
+      </div>
+
+      <div class="form-footer">
+        <button class="btn btn-teal" id="btnCetakSimpan" type="button">Cetak dan Simpan</button>
+        <button class="btn btn-blue" id="btnSimpan" type="button">Simpan</button>
+        <a class="btn btn-outline" href="daftar-pelunasan-hutang.html" id="btnBatal">Batalkan</a>
+      </div>
+
+    </div>
+  </div>
+</main>
+
+<script>window.APP_BASE = "../../";</script>
+<script src="../../assets/js/kasbank-store.js"></script>
+<script src="../../assets/js/data-store.js"></script>
+<script src="../../assets/js/faktur-hutang-store.js"></script>
+<script src="../../assets/js/pengajuan-pembayaran-store.js"></script>
+<script src="../../assets/js/pelunasan-hutang-store.js"></script>
+<script src="../../assets/js/shared.js"></script>
+<script src="pelunasan-hutang-form.js"></script>
+</body>
+</html>

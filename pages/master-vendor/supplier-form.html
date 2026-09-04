@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Form Supplier - MASERP Mockup</title>
+<link rel="stylesheet" href="../../assets/css/main.css">
+</head>
+<body data-active-menu="supplier">
+
+<div id="app-header"></div>
+<div id="app-sidebar"></div>
+
+<main class="app-main">
+  <div class="page-card">
+    <div class="page-card__header">
+      <div class="page-card__title">&#128100; <span id="pageTitle">Supplier</span></div>
+      <div class="page-card__actions">
+        <a class="btn btn-outline" href="daftar-supplier.html">&#8592; Kembali ke Daftar</a>
+      </div>
+    </div>
+
+    <div class="page-card__body">
+
+      <h2 class="section-title mt-0">Informasi Supplier</h2>
+      <div class="form-grid">
+        <div>
+          <div class="form-row">
+            <label>Kode Supplier</label>
+            <div class="form-control-wrap with-btn">
+              <select id="fPrefix" style="max-width:110px;">
+                <option value="000SP">000SP</option>
+                <option value="VN01">VN01</option>
+                <option value="BDGSP">BDGSP</option>
+                <option value="BGLSP">BGLSP</option>
+              </select>
+              <input type="text" id="fKode" disabled>
+            </div>
+          </div>
+          <div class="form-row">
+            <label>Nama Supplier <span style="color:var(--danger);">*</span></label>
+            <div class="form-control-wrap"><input type="text" id="fNama" placeholder="Nama supplier"></div>
+          </div>
+          <div class="form-row">
+            <label>Wilayah</label>
+            <div class="form-control-wrap"><input type="text" id="fWilayah" placeholder="Wilayah"></div>
+          </div>
+          <div class="form-row">
+            <label>Telepon</label>
+            <div class="form-control-wrap"><input type="tel" id="fTelepon" placeholder="Nomor telepon"></div>
+          </div>
+          <div class="form-row">
+            <label>Alamat Email</label>
+            <div class="form-control-wrap"><input type="email" id="fEmail" placeholder="email@example.com"></div>
+          </div>
+          <div class="form-row">
+            <label>Status Supplier</label>
+            <div class="radio-group">
+              <label><input type="radio" name="fStatus" value="Aktif" checked> Aktif</label>
+              <label><input type="radio" name="fStatus" value="Non-Aktif"> Non-Aktif</label>
+            </div>
+          </div>
+          <div class="form-row">
+            <label>Syarat Bayar</label>
+            <div class="form-control-wrap">
+              <select id="fSyaratBayar">
+                <option>Cash</option>
+                <option>Kredit 7 Hari</option>
+                <option>Kredit 14 Hari</option>
+                <option selected>Kredit 30 Hari</option>
+                <option>Kredit 45 Hari</option>
+                <option>Kredit 60 Hari</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-row">
+            <label>Batas Kredit</label>
+            <div class="form-control-wrap"><input type="number" id="fBatasKredit" value="0" min="0"></div>
+          </div>
+          <div class="form-row">
+            <label>Provinsi</label>
+            <div class="form-control-wrap"><input type="text" id="fProvinsi" placeholder="Provinsi"></div>
+          </div>
+          <div class="form-row">
+            <label>Kabupaten/Kota</label>
+            <div class="form-control-wrap"><input type="text" id="fKabupaten" placeholder="Kabupaten/Kota"></div>
+          </div>
+        </div>
+
+        <div>
+          <div class="form-row">
+            <label>Mata Uang</label>
+            <div class="form-control-wrap">
+              <select id="fMataUang">
+                <option value="IDR">IDR</option>
+                <option value="USD">USD</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-row">
+            <label>Supplier Group</label>
+            <div class="form-control-wrap">
+              <select id="fSupplierGroup">
+                <option value="">Pilih Supplier Grup</option>
+                <option value="Umum">Umum</option>
+                <option value="Kontraktor">Kontraktor</option>
+                <option value="Import">Import</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-row">
+            <label>Fax</label>
+            <div class="form-control-wrap"><input type="text" id="fFax" placeholder="Nomor fax"></div>
+          </div>
+          <div class="form-row">
+            <label>Kontak Person</label>
+            <div class="form-control-wrap"><input type="text" id="fKontakPerson" placeholder="Nama kontak person"></div>
+          </div>
+          <div class="form-row">
+            <label>NPWP</label>
+            <div class="form-control-wrap"><input type="text" id="fNpwp" placeholder="Nomor NPWP"></div>
+          </div>
+          <div class="form-row">
+            <label>PPN Tipe</label>
+            <div class="form-control-wrap">
+              <select id="fPpnTipe">
+                <option>PPN Eksklusif</option>
+                <option>PPN Inklusif</option>
+                <option>Non PPN</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-row">
+            <label>Kecamatan</label>
+            <div class="form-control-wrap"><input type="text" id="fKecamatan" placeholder="Kecamatan"></div>
+          </div>
+          <div class="form-row">
+            <label>Kelurahan</label>
+            <div class="form-control-wrap"><input type="text" id="fKelurahan" placeholder="Kelurahan"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-row" style="margin-top:4px;">
+        <label>Alamat</label>
+        <div class="form-control-wrap"><textarea id="fAlamat" placeholder="Alamat lengkap"></textarea></div>
+      </div>
+      <div class="form-row">
+        <label>Attach File</label>
+        <div class="form-control-wrap">
+          <button class="btn btn-outline btn-sm" id="btnAttach" type="button">&#128206; <span id="attachCount">0</span> Files</button>
+        </div>
+      </div>
+      <div class="form-row">
+        <label>Custom Field</label>
+        <div class="form-control-wrap with-btn">
+          <input type="text" id="fCustomField" placeholder="Pilih Custom Field" disabled>
+          <button class="btn-icon ghost" id="btnCustomField" type="button">&#128269;</button>
+        </div>
+      </div>
+
+      <!-- ==================================================================
+           SECTION BARU: Informasi Rekening Bank (untuk Permintaan Transfer Dana)
+           ================================================================== -->
+      <h2 class="section-title">
+        <span>Informasi Rekening Bank</span>
+        <span class="section-hint">Digunakan sebagai referensi tujuan pada transaksi Permintaan Transfer Dana</span>
+      </h2>
+      <div class="bank-table-wrap">
+        <table class="bank-table">
+          <thead>
+            <tr>
+              <th style="width:22%;">Bank</th>
+              <th style="width:20%;">Cabang</th>
+              <th style="width:22%;">Nomor Rekening</th>
+              <th style="width:26%;">Nama Rekening</th>
+              <th class="col-action">Aksi</th>
+            </tr>
+          </thead>
+          <tbody id="bankTableBody">
+            <!-- diisi oleh supplier-form.js -->
+          </tbody>
+        </table>
+      </div>
+      <div class="bank-actions-row">
+        <button class="btn btn-outline btn-sm" id="btnAddBank" type="button">+ Tambah Rekening</button>
+        <span class="field-note" id="bankRowCountLabel"></span>
+      </div>
+
+      <h2 class="section-title">Info Akuntansi</h2>
+      <table class="acct-table">
+        <thead>
+          <tr><th>Keterangan Akun</th><th>Kode Akun</th><th>Nama Akun</th></tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Akun GL Utang</td>
+            <td>
+              <div class="form-control-wrap with-btn">
+                <input type="text" id="fAkunGlUtang" placeholder="Klik untuk pilih" disabled>
+                <button class="btn-icon blue" data-coa="fAkunGlUtang" type="button">&#128269;</button>
+                <button class="btn-icon red" data-coa-clear="fAkunGlUtang" type="button">&#128465;</button>
+              </div>
+            </td>
+            <td id="fAkunGlUtangNama" class="text-muted">-</td>
+          </tr>
+          <tr>
+            <td>GL Akun Uang Muka</td>
+            <td>
+              <div class="form-control-wrap with-btn">
+                <input type="text" id="fAkunUangMuka" placeholder="Klik untuk pilih" disabled>
+                <button class="btn-icon blue" data-coa="fAkunUangMuka" type="button">&#128269;</button>
+                <button class="btn-icon red" data-coa-clear="fAkunUangMuka" type="button">&#128465;</button>
+              </div>
+            </td>
+            <td id="fAkunUangMukaNama" class="text-muted">-</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="form-footer">
+        <button class="btn btn-outline" id="btnDuplicate" type="button">Duplicate</button>
+        <button class="btn btn-blue" id="btnSimpan" type="button">Simpan</button>
+        <a class="btn btn-outline" href="daftar-supplier.html" id="btnBatal">Batalkan</a>
+      </div>
+
+    </div>
+  </div>
+</main>
+
+<script>window.APP_BASE = "../../";</script>
+<script src="../../assets/js/data-store.js"></script>
+<script src="../../assets/js/shared.js"></script>
+<script src="supplier-form.js"></script>
+</body>
+</html>

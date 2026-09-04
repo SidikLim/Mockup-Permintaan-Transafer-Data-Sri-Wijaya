@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kas/Bank - MASERP Mockup</title>
+<link rel="stylesheet" href="../../assets/css/main.css">
+</head>
+<body data-active-menu="master-kas-bank">
+
+<div id="app-header"></div>
+<div id="app-sidebar"></div>
+
+<main class="app-main">
+  <div class="page-card">
+    <div class="page-card__header">
+      <div class="page-card__title" id="pageTitle">+ Kas/Bank</div>
+      <div class="page-card__actions">
+        <button class="btn btn-outline" id="btnActivityLog" type="button">&#128269; Activity Log</button>
+        <button class="btn btn-outline" id="btnHelp" type="button">? Help</button>
+      </div>
+    </div>
+
+    <div class="page-card__body">
+      <h2 style="font-size:19px;margin:0 0 18px;">Informasi Kas/Bank</h2>
+
+      <div class="field-row">
+        <div class="field-group">
+          <label>Kode Bank</label>
+          <div class="with-btn">
+            <input type="text" id="fKode" disabled>
+            <button class="btn-icon blue" id="btnRegenKode" type="button" title="Regenerasi kode">&#8635;</button>
+          </div>
+        </div>
+        <div class="field-group wide">
+          <label>Nama Bank <span style="color:var(--danger);">*</span></label>
+          <input type="text" id="fNama" placeholder="contoh: Bank Mandiri - HO">
+        </div>
+        <div class="field-group">
+          <label>Tipe</label>
+          <select id="fTipe">
+            <option value="Kas">Kas</option>
+            <option value="Bank">Bank</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="field-row">
+        <div class="field-group">
+          <label>Saldo</label>
+          <input type="text" inputmode="decimal" id="fSaldo">
+        </div>
+        <div class="field-group narrow">
+          <label>Jenis Mata Uang</label>
+          <select id="fMataUang">
+            <option>IDR</option>
+            <option>USD</option>
+            <option>SGD</option>
+          </select>
+        </div>
+        <div class="field-group">
+          <label>Telepon</label>
+          <input type="text" id="fTelepon" placeholder="Nomor telepon (opsional)">
+        </div>
+        <div class="field-group wide">
+          <label>No. Rekening</label>
+          <input type="text" id="fNoRek" placeholder="Nomor rekening (opsional untuk tipe Kas)">
+        </div>
+      </div>
+
+      <div class="form-footer">
+        <button class="btn btn-blue" id="btnSimpan" type="button">Simpan</button>
+        <a class="btn btn-outline" href="daftar-bank.html" id="btnBatal">Batalkan</a>
+      </div>
+
+    </div>
+  </div>
+</main>
+
+<script>window.APP_BASE = "../../";</script>
+<script src="../../assets/js/kasbank-store.js"></script>
+<script src="../../assets/js/shared.js"></script>
+<script src="kasbank-form.js"></script>
+</body>
+</html>

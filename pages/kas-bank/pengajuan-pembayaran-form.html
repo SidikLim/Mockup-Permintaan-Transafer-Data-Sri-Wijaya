@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pengajuan Pembayaran - MASERP Mockup</title>
+<link rel="stylesheet" href="../../assets/css/main.css">
+</head>
+<body data-active-menu="pengajuan-pembayaran">
+
+<div id="app-header"></div>
+<div id="app-sidebar"></div>
+
+<main class="app-main">
+  <div class="page-card">
+    <div class="page-card__header">
+      <div class="page-card__title" id="pageTitle">+ Pengajuan Pembayaran</div>
+      <div class="page-card__actions">
+        <button class="btn btn-outline" id="btnHelp" type="button">? Help</button>
+      </div>
+    </div>
+
+    <div class="page-card__body">
+      <div id="stampBox"></div>
+
+      <h2 style="font-size:19px;margin:0 0 18px;">Pengajuan Pembayaran</h2>
+
+      <div class="field-row">
+        <div class="field-group">
+          <label>No. Otomatis</label>
+          <select id="fNoOtomatis">
+            <option value="PYR01">PYR01</option>
+            <option value="PYR-ADV">PYR-ADV</option>
+          </select>
+        </div>
+        <div class="field-group">
+          <label>No. Transaksi</label>
+          <div class="with-btn">
+            <input type="text" id="fNoTransaksi" disabled>
+            <button class="btn-icon blue" id="btnRegenNo" type="button" title="Regenerasi nomor">&#8635;</button>
+          </div>
+        </div>
+        <div class="field-group">
+          <label>Metode Payment</label>
+          <select id="fMetodePayment">
+            <option>Transfer</option>
+            <option>Cash</option>
+            <option>Giro</option>
+          </select>
+        </div>
+        <div class="field-group wide">
+          <label>Proyek</label>
+          <div class="with-btn">
+            <input type="text" id="fProyek" placeholder="Pilih project (opsional)">
+            <button class="btn-icon blue" id="btnPickProyek" type="button">&#128269;</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="field-row">
+        <div class="field-group wide">
+          <label>Supplier <span style="color:var(--danger);">*</span></label>
+          <div class="with-btn">
+            <input type="text" id="fSupplier" placeholder="Nama supplier" list="supplierList">
+            <button class="btn-icon blue" id="btnPickSupplier" type="button">&#128269;</button>
+          </div>
+          <datalist id="supplierList"></datalist>
+        </div>
+        <div class="field-group">
+          <label>Tgl. Trn.</label>
+          <input type="date" id="fTglTrn">
+        </div>
+        <div class="field-group">
+          <label>Tgl. Jth. Tempo</label>
+          <input type="date" id="fTglJatuhTempo">
+        </div>
+        <div class="field-group wide">
+          <label>Bank Payment</label>
+          <select id="fBankPayment"></select>
+        </div>
+      </div>
+
+      <div class="field-row">
+        <div class="field-group wide" style="flex:1 1 100%;">
+          <label>Account Bank Supplier</label>
+          <select id="fAccountBankSupplier"></select>
+          <div id="acctTableWrap" style="margin-top:6px;"></div>
+        </div>
+      </div>
+
+      <div class="field-row">
+        <div class="field-group wide" style="flex:1 1 100%;">
+          <label>Keterangan</label>
+          <textarea id="fKeterangan" placeholder="Keterangan pengajuan pembayaran" style="min-height:70px;"></textarea>
+        </div>
+      </div>
+
+      <div class="jurnal-subheader" style="margin-top:8px;">
+        <span>&#128179; Rincian Pengajuan Pembayaran</span>
+      </div>
+      <div class="piutang-table-wrap">
+        <table class="piutang-table">
+          <thead>
+            <tr>
+              <th class="col-check">Bayar</th>
+              <th>No. Faktur</th>
+              <th>No. Invoice</th>
+              <th>Tgl. Faktur</th>
+              <th>Tgl. Jth. Tempo</th>
+              <th>Crc</th>
+              <th class="col-amount">Total</th>
+              <th class="col-amount">Sisa</th>
+              <th class="col-amount">Pembayaran</th>
+              <th>Komponen</th>
+            </tr>
+          </thead>
+          <tbody id="rincianTableBody">
+            <!-- diisi oleh pengajuan-pembayaran-form.js -->
+          </tbody>
+        </table>
+      </div>
+      <div class="total-terima-row">
+        <div class="total-terima-box">
+          <label>Total</label>
+          <input type="text" id="sTotal" disabled value="0,00">
+        </div>
+      </div>
+
+      <div id="activityLogBox"></div>
+
+      <div class="form-footer">
+        <button class="btn btn-teal" id="btnCetakSimpan" type="button">Cetak dan Simpan</button>
+        <button class="btn btn-blue" id="btnSimpan" type="button">Simpan</button>
+        <a class="btn btn-outline" href="daftar-pengajuan-pembayaran.html" id="btnBatal">Batalkan</a>
+      </div>
+
+    </div>
+  </div>
+</main>
+
+<script>window.APP_BASE = "../../";</script>
+<script src="../../assets/js/kasbank-store.js"></script>
+<script src="../../assets/js/data-store.js"></script>
+<script src="../../assets/js/faktur-hutang-store.js"></script>
+<script src="../../assets/js/pelunasan-hutang-store.js"></script>
+<script src="../../assets/js/pengajuan-pembayaran-store.js"></script>
+<script src="../../assets/js/shared.js"></script>
+<script src="pengajuan-pembayaran-form.js"></script>
+</body>
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Karyawan - MASERP Mockup</title>
+<link rel="stylesheet" href="../../assets/css/main.css">
+</head>
+<body data-active-menu="master-karyawan">
+
+<div id="app-header"></div>
+<div id="app-sidebar"></div>
+
+<main class="app-main">
+  <div class="page-card">
+    <div class="page-card__header">
+      <div class="page-card__title" id="pageTitle">+ Karyawan</div>
+      <div class="page-card__actions">
+        <button class="btn btn-outline" id="btnActivityLog" type="button">&#128269; Activity Log</button>
+        <button class="btn btn-outline" id="btnHelp" type="button">? Help</button>
+      </div>
+    </div>
+
+    <div class="page-card__body">
+      <h2 class="section-title mt-0">Informasi Karyawan</h2>
+      <div class="form-grid">
+        <div>
+          <div class="form-row">
+            <label>Kode Karyawan</label>
+            <div class="form-control-wrap"><input type="text" id="fKode" disabled></div>
+          </div>
+          <div class="form-row">
+            <label>Nama Karyawan <span style="color:var(--danger);">*</span></label>
+            <div class="form-control-wrap"><input type="text" id="fNama" placeholder="Nama karyawan"></div>
+          </div>
+          <div class="form-row">
+            <label>Telepon</label>
+            <div class="form-control-wrap"><input type="tel" id="fTelepon" placeholder="Nomor telepon"></div>
+          </div>
+          <div class="form-row">
+            <label>Alamat Email</label>
+            <div class="form-control-wrap"><input type="email" id="fEmail" placeholder="email@example.com"></div>
+          </div>
+        </div>
+        <div>
+          <div class="form-row">
+            <label>Mata Uang</label>
+            <div class="form-control-wrap">
+              <select id="fMataUang">
+                <option value="IDR">IDR</option>
+                <option value="USD">USD</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-row">
+            <label>Alamat</label>
+            <div class="form-control-wrap"><textarea id="fAlamat" placeholder="Alamat lengkap"></textarea></div>
+          </div>
+          <div class="form-row">
+            <label>Jabatan</label>
+            <div class="form-control-wrap"><input type="text" id="fJabatan" placeholder="Jabatan / posisi"></div>
+          </div>
+        </div>
+      </div>
+
+      <h2 class="section-title">Info Akuntansi</h2>
+      <div class="form-grid">
+        <div>
+          <div class="form-row">
+            <label>No. Rekening</label>
+            <div class="form-control-wrap"><input type="text" id="fNoRekening" placeholder="Nomor rekening bank"></div>
+          </div>
+          <div class="form-row">
+            <label>Batas Kredit</label>
+            <div class="form-control-wrap"><input type="number" id="fBatasKredit" value="0" min="0"></div>
+          </div>
+        </div>
+        <div>
+          <div class="form-row">
+            <label>NPWP</label>
+            <div class="form-control-wrap"><input type="text" id="fNpwp" placeholder="Nomor NPWP"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-footer">
+        <button class="btn btn-blue" id="btnSimpan" type="button">Simpan</button>
+        <a class="btn btn-outline" href="daftar-karyawan.html" id="btnBatal">Batalkan</a>
+      </div>
+    </div>
+  </div>
+</main>
+
+<script>window.APP_BASE = "../../";</script>
+<script src="../../assets/js/karyawan-store.js"></script>
+<script src="../../assets/js/kasbon-store.js"></script>
+<script src="../../assets/js/shared.js"></script>
+<script src="karyawan-form.js"></script>
+</body>
+</html>
